@@ -249,7 +249,7 @@ configure_centos()
 DEVICE=eth0
 BOOTPROTO=dhcp
 ONBOOT=yes
-HOSTNAME=${UTSNAME}
+HOSTNAME=${utsname}
 NM_CONTROLLED=no
 TYPE=Ethernet
 MTU=${MTU}
@@ -510,7 +510,7 @@ copy_centos()
     #cp -a $cache/rootfs-$arch $rootfs_path || return 1
     # i prefer rsync (no reason really)
     mkdir -p $rootfs_path
-    rsync -a $cache/rootfs/ $rootfs_path/
+    rsync -a $cache/rootfs/ $rootfs_path/UTS
     echo
     return 0
 }
