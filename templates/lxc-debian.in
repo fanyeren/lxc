@@ -365,6 +365,12 @@ post_process()
     local hostarch="$1"; shift
     local packages="$*"
 
+ 
+    # Parallel concurrent booting (using startpar) should be disabled in debian wheezy!
+    if [[ 'x'$release == 'xwheezy' ]];
+        touch $rootfs/etc/init.d/.legacy-bootordering
+    fi
+
     # Disable service startup
     cat > ${rootfs}/usr/sbin/policy-rc.d << EOF
 #!/bin/sh
